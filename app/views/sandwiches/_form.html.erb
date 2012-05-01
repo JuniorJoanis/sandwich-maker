@@ -1,0 +1,22 @@
+<%= form_for(@sandwich) do |f| %>
+  <% if @sandwich.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sandwich.errors.count, "error") %> prohibited this type from being saved:</h2>
+
+      <ul>
+      <% @sandwich.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% type_list = Type.all.map{ |t| [t.name,t.id]} %>
+    Choose your sandwich: 
+    <%= select(:sandwich, :type_id, options_for_select(type_list)) %>
+  </div>
+  <div class="actions">
+    <%= f.submit  "Order sandwich" %>
+  </div>
+<% end %>

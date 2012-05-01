@@ -1,0 +1,37 @@
+require 'net/http'
+class SandwichesController < ApplicationController
+  def order
+    @sandwich = Sandwich.new 
+    respond_to do |format|
+      format.html # order.html.erb
+      format.json { render json: @sandwich }
+    end
+  end
+
+  def show
+    @sandwich = Sandwich.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @sandwich}
+    end
+  end
+
+  def create
+    @sandwich = Sandwich.new(params[:sandwich])
+    twitter_api = URI('https://api.twitter.com/1/direct_messages/new.format')
+    test = Net::HTTP.post_form(twitter_api, 'screen_name' => 'juniorjoanis', 'text' => 'I want a sandwich #{@sandwich.type_name}')
+    puts test.body
+    respond_to do |format|
+      if @sandwich.save
+        Emailer.order_email(@sandwich).deliver
+        format.html { redirect_to @sandwich, notice: 'Sandwich was successfully ordered.'}
+        format.json { render json: @sandwich, status: :created, location: @sandwich }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @sandwich.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+end

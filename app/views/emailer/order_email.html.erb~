@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>We received your order, <%= @sandwich.type_name %></h1>
+    <p>
+      You have successfully ordered on general-things.com,
+      your sandwich is: <%= @sandwich.type_name %>.<br/>
+    </p>
+    <p>
+      Go on: <%= @url %>.
+    </p>
+  </body>
+</html>

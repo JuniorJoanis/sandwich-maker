@@ -1,0 +1,9 @@
+Welcome to general-things.com
+===============================================
+ 
+You have successfully ordering on example.com,
+your sandwich is: <%= @sandwich.type_name %>.
+ 
+Go on: <%= @url %>.
+ 
+Thanks for joining and have a great day!

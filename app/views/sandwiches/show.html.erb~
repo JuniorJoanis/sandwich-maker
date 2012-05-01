@@ -1,0 +1,13 @@
+<h1>Sandwiches Details: </h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sandwich.type_name %>
+</p>
+
+
+<%= render "social/twitter" , :url => sandwiches_path, :text => "I just ordered an sandwich on General-things.com" %>
+<%= render "social/facebook", :url => sandwiches_path %>
+
