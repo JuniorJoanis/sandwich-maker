@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: "Example User", email: "user@example.com", password: "testpassword", password_confirmation: "testpassword") }
+  before { let(:user) { FactoryGirl.create(:user) } }
 
   subject { @user }
 
