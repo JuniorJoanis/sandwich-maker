@@ -10,18 +10,16 @@
           <div class="nav-collapse">
             <ul class="nav">
               <% if signed_in? %>
-              <li class="active"><%= link_to "Order", sandwiches_order_path %></li>
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "My old sandwiches", sandwiches_path %></li>
-              <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+              <li class="order"><%= link_to "Order", sandwiches_order_path %></li>
+              <li class="profile" ><%= link_to "Profile", current_user %></li>
+              <li class="old-sandwiches"><%= link_to "My old sandwiches", sandwiches_path %></li>
+              <li class="signout"><%= link_to "Sign out", signout_path, method: "delete" %></li>
               <% else %>
-               <li><%= link_to "Sign in", signin_path %></li>
+               <li class="signin"><%= link_to "Sign in", signin_path %></li>
              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
-
 
