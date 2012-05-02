@@ -1,0 +1,16 @@
+<footer class="footer">
+  <small>
+    <a href="#">Sandwich maker</a>
+    by Junior Joanis
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "Home",   root_path %></li>
+      <% if signed_in? %>
+        <li><%= link_to "Order", sandwiches_order_path %></li>
+      <% else %>
+         <li><%= link_to "Sign in", signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</footer>

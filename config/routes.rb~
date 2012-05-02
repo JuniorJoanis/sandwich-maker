@@ -1,10 +1,14 @@
 GeneralThingsV2::Application.routes.draw do
-  get "users/new"
+  resources :users
 
-  get "sandwiches/order"
-  get "sandwiches/show"
+  get 'sandwiches/order'
 
-  resources :sandwiches 
+  resources :sandwiches                                                  
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   # T
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -55,7 +59,7 @@ GeneralThingsV2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sandwiches#order'
+  root :to => 'users#new'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,5 +1,5 @@
-require 'net/http'
 class SandwichesController < ApplicationController
+  
   def order
     @sandwich = Sandwich.new 
     respond_to do |format|
@@ -17,11 +17,17 @@ class SandwichesController < ApplicationController
     end
   end
 
+  def index
+    @sandwiches = Sandwich.all
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @sandwich}
+    end
+  end
+
   def create
     @sandwich = Sandwich.new(params[:sandwich])
-    twitter_api = URI('https://api.twitter.com/1/direct_messages/new.format')
-    test = Net::HTTP.post_form(twitter_api, 'screen_name' => 'juniorjoanis', 'text' => 'I want a sandwich #{@sandwich.type_name}')
-    puts test.body
     respond_to do |format|
       if @sandwich.save
         Emailer.order_email(@sandwich).deliver

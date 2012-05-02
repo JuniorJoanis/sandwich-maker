@@ -3,17 +3,28 @@
 <head>
   <title>GeneralThingsV2</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "boostrap-dropdown" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+  </style>
 </head>
 <body>
+
 <%= javascript_include_tag "fb_header" %>
 
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
-<%= yield %>
+<%= render "/layouts/header" %>
 
-<%= debug(params) if Rails.env.development? %>
+<div class="container">
+  <%= yield %>
+</div>
+<%= render "/layouts/footer" %>
+
 </body>
 </html>

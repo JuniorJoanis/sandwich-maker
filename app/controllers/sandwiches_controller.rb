@@ -1,5 +1,5 @@
-require 'net/http'
 class SandwichesController < ApplicationController
+  
   def order
     @sandwich = Sandwich.new 
     respond_to do |format|
@@ -11,6 +11,15 @@ class SandwichesController < ApplicationController
   def show
     @sandwich = Sandwich.find(params[:id])
 
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @sandwich}
+    end
+  end
+
+  def index
+    @sandwiches = current_user.sandwiches
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sandwich}

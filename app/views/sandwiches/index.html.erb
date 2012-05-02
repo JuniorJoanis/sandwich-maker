@@ -1,0 +1,11 @@
+<h1>My Last sandwiches</h1>
+
+<table class="table table-striped" >
+<% @sandwiches.each do |sandwich| %>
+   <tr> 
+     <td><%= sandwich.type_name %> </td>
+     <td> Ordered on : <%=  sandwich.created_at.strftime("%A %d %Y ")%> </td>
+   </tr>
+<% end %>
+</table>
+

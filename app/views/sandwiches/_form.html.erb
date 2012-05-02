@@ -1,4 +1,5 @@
-<%= form_for(@sandwich) do |f| %>
+<% if signed_in? %>
+<%= form_for @sandwich, :html => { :class => "well" }  do |f| %>
   <% if @sandwich.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sandwich.errors.count, "error") %> prohibited this type from being saved:</h2>
@@ -15,8 +16,15 @@
     <% type_list = Type.all.map{ |t| [t.name,t.id]} %>
     Choose your sandwich: 
     <%= select(:sandwich, :type_id, options_for_select(type_list)) %>
+    <%= hidden_field_tag "sandwich[user_id]", current_user.id  %>
   </div>
   <div class="actions">
     <%= f.submit  "Order sandwich" %>
   </div>
 <% end %>
+
+<% else %>
+ <p> Please <%= link_to "Sign in", signin_path %></p>
+<% end %>
+
+
