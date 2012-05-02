@@ -6,7 +6,7 @@ class Emailer < ActionMailer::Base
     @sandwich = sandwich
     @url  = "http://general-things.com"
     quotes = YAML::load(File.open("config/quotes.yml"))
-    quote_id = Random.rand(1...4) 
+    quote_id = (1..4).to_a.sample
     @personal_quotes = quotes["quotes"][quote_id]
     mail(:to => "junior.joanis@gmail.com", :subject => "We received your order")
   end
