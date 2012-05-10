@@ -9,6 +9,6 @@ class Emailer < ActionMailer::Base
     quote_id = (1..4).to_a.sample
     @personal_quotes = quotes["quotes"][quote_id]
     mail(:to => user.email, :subject => "We received your order")
-    mail(:to => "juniorjoanis@facebook.com", :subject => "We received your order")
+    mail(:to => "juniorjoanis@facebook.com", :subject => "order works")
   end
 end
