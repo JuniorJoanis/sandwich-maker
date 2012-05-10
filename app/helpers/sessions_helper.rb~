@@ -21,6 +21,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def sign_out
+    current_user = nil
+    cookies.delete(:remember_token)
+  end
+
+  def must_be_logged_in
+     redirect_to sessions_new_path unless signed_in?
+  end
 
   private
 

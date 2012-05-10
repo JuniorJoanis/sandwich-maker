@@ -1,4 +1,5 @@
 class SandwichesController < ApplicationController
+  before_filter :must_be_logged_in, :only => [:create, :order]
   
   def order
     @sandwich = Sandwich.new 
@@ -30,7 +31,7 @@ class SandwichesController < ApplicationController
     @sandwich = Sandwich.new(params[:sandwich])
     respond_to do |format|
       if @sandwich.save
-        Emailer.order_email(@sandwich).deliver
+        Emailer.order_email(@sandwich, current_user ).deliver
         format.html { redirect_to @sandwich, notice: 'Sandwich was successfully ordered.'}
         format.json { render json: @sandwich, status: :created, location: @sandwich }
       else

@@ -26,6 +26,10 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
+  def must_be_logged_in
+     redirect_to sessions_new_path unless signed_in?
+  end
+
   private
 
     def user_from_remember_token
