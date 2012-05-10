@@ -1,6 +1,6 @@
 == Welcome to Make Sandwich App
 
-This is an implematation of the gem make_sandwich: https://www.ruby-toolbox.com/gems/make-sandwich
+This is an implementation of the gem make_sandwich: https://www.ruby-toolbox.com/gems/make-sandwich
 
 == Features
 
