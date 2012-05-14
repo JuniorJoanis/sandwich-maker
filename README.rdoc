@@ -10,5 +10,11 @@ This is an implementation of the gem make_sandwich: https://www.ruby-toolbox.com
 * twitter/ facebook sharing
 * Use Twitter Bootstrap
 
+== Deployed on heroku
+
+If you want to see what it looks like, you can check the app on this url: https://strong-night-9455.herokuapp.com
+
+
+
 
 
