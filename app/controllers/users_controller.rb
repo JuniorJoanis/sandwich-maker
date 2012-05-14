@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_filter :must_be_logged_in, :only => [:new]
+  
   def show
     @user = User.find(params[:id])
   end
 
   def new
-    redirect_to sandwiches_order_path if signed_in?
     @user = User.new
   end
 

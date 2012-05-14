@@ -27,7 +27,11 @@ module SessionsHelper
   end
 
   def must_be_logged_in
-     redirect_to sessions_new_path unless signed_in?
+     if signed_in?
+       redirect_to sandwiches_order_path
+     else
+       redirect_to sessions_new_path
+     end
   end
 
   private
