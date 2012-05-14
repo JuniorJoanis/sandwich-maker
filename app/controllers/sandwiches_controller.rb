@@ -11,7 +11,6 @@ class SandwichesController < ApplicationController
 
   def show
     @sandwich = Sandwich.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sandwich}
